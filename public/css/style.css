@@ -1,3 +1,16 @@
+/* Estilos de la barra de navegación */
+#barraNav li a{
+  color: rgb(223, 223, 223);
+}
+.nav{
+  background: rgb(0, 0, 0);
+  width: 100%;
+}
+
+#barraNav li a:hover{
+	color: rgb(2, 71, 162);
+}
+/* Estilos del Home */
 #home{
 background-image: url(../img/home.jpg);
 background-size: cover;
