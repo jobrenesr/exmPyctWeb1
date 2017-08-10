@@ -10,6 +10,11 @@
 #barraNav li a:hover{
 	color: rgb(2, 71, 162);
 }
+/* Mensaje de error */
+#requerido{
+	color: rgb(190, 9, 9);
+	font-size: 0.9em;
+}
 /* Estilos del Home */
 #home{
 background-image: url(../img/home.jpg);
