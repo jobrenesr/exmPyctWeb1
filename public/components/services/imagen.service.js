@@ -6,7 +6,7 @@
   function imageService($http){
 
     var cloudObj = {
-      url:'https://api.cloudinary.com/v1_1/thedmachine/image/upload',
+      url:'https://api.cloudinary.com/v1_1/da3g464b2/image/upload',
       data:{
         upload_preset: 'examenPablo',
         tags:'EPW',
