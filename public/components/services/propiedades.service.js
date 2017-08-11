@@ -20,11 +20,11 @@
   }
 
   // Función para guardar modificación de propiedades
-  function _updatePropiedad(pModOwner){
+  function _updatePropiedad(pComprada){
     var listaPropiedades = _getPropiedades();
     for(var i = 0; i < listaPropiedades.length; i++){
-      if(listaPropiedades[i].id == pModOwner.id){
-        listaPropiedades[i] = pModOwner;
+      if(listaPropiedades[i].id == pComprada.id){
+        listaPropiedades[i] = pComprada;
       }
     }
     localStorage.setItem('lslistaPropiedades', JSON.stringify(listaPropiedades));
