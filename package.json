@@ -1,0 +1,25 @@
+{
+  "name": "exmPyctWeb1",
+  "version": "1.0.0",
+  "description": "Examen Proyecto web 1",
+  "main": "public/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobrenesr/exmPyctWeb1"
+  },
+  "author": "Josué Brenes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jobrenesr/exmPyctWeb1/issues"
+  },
+  "homepage": "https://github.com/jobrenesr/exmPyctWeb1#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "nib": "^1.1.2"
+  }
+}
