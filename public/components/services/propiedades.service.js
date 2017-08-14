@@ -4,33 +4,6 @@
   .module('myApp')
   .service('propiedadesService', propiedadesService);
 
-  var publicAPI = {
-    getPropiedad : _getPropiedad,
-    updatePropiedad :_updatePropiedad
-  };
-  return publicAPI;
-
-  // Función para extraer información de propiedades
-  function _getPropiedad(){
-    var listaPropiedades = JSON.parse(localStorage.getItem('lslistaPropiedades'));
-    if(listaPropiedades == null){
-      listaPropiedades = propiedades;
-    }
-    return listaPropiedades;
-  }
-
-  // Función para guardar modificación de propiedades
-  function _updatePropiedad(pComprada){
-    var listaPropiedades = _getPropiedades();
-    for(var i = 0; i < listaPropiedades.length; i++){
-      if(listaPropiedades[i].id == pComprada.id){
-        listaPropiedades[i] = pComprada;
-      }
-    }
-    localStorage.setItem('lslistaPropiedades', JSON.stringify(listaPropiedades));
-  }
-}
-
   function propiedadesService(){
     var propiedades = [
     {
@@ -743,5 +716,32 @@
       "averageProbability": 2.3609500000000002
     }
 ];
+
+var publicAPI = {
+  getPropiedad : _getPropiedad,
+  updatePropiedad :_updatePropiedad
+};
+return publicAPI;
+
+// Función para extraer información de propiedades
+function _getPropiedad(){
+  var listaPropiedades = JSON.parse(localStorage.getItem('lslistaPropiedades'));
+  if(listaPropiedades == null){
+    listaPropiedades = propiedades;
+  }
+  return listaPropiedades;
+}
+
+// Función para guardar modificación de propiedades
+function _updatePropiedad(pComprada){
+  var listaPropiedades = _getPropiedades();
+  for(var i = 0; i < listaPropiedades.length; i++){
+    if(listaPropiedades[i].id == pComprada.id){
+      listaPropiedades[i] = pComprada;
+    }
+  }
+  localStorage.setItem('lslistaPropiedades', JSON.stringify(listaPropiedades));
+}
+}
 
 })();
