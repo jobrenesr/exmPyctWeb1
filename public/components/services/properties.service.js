@@ -2,37 +2,10 @@
   'use strict';
   angular
   .module('myApp')
-  .service('propiedadesService', propiedadesService);
+  .service('propertiesService', propertiesService);
 
-  var publicAPI = {
-    getPropiedad : _getPropiedad,
-    updatePropiedad :_updatePropiedad
-  };
-  return publicAPI;
-
-  // Función para extraer información de propiedades
-  function _getPropiedad(){
-    var listaPropiedades = JSON.parse(localStorage.getItem('lslistaPropiedades'));
-    if(listaPropiedades == null){
-      listaPropiedades = propiedades;
-    }
-    return listaPropiedades;
-  }
-
-  // Función para guardar modificación de propiedades
-  function _updatePropiedad(pComprada){
-    var listaPropiedades = _getPropiedades();
-    for(var i = 0; i < listaPropiedades.length; i++){
-      if(listaPropiedades[i].id == pComprada.id){
-        listaPropiedades[i] = pComprada;
-      }
-    }
-    localStorage.setItem('lslistaPropiedades', JSON.stringify(listaPropiedades));
-  }
-}
-
-  function propiedadesService(){
-    var propiedades = [
+  function propertiesService(){
+    var properties = [
     {
       "name": "Mediterranean Avenue",
       "id": "mediterraneanave",
@@ -743,5 +716,36 @@
       "averageProbability": 2.3609500000000002
     }
 ];
+    var publicAPI = {
+      getProperties : _getProperties,
+      updateProperty :_updateProperty
+      //updateCompetition : _updateCompetition
+    };
+    return publicAPI; // todas las funciones que sean llamadas por ajax deben estar debajo del return, para que cuando angular corra el script haga el return y devuelva el api , las funciones debajo del return son privadas y se devuelve el api que es el que contiene las funciones
+
+    // Función para extraer información de eventos
+    function _getProperties(){
+      var propertiesList = JSON.parse(localStorage.getItem('lsPropertiesList'));
+      if(propertiesList == null){
+        propertiesList = properties;
+      }
+      return propertiesList;
+    }
+
+    // Función para guardar modificación de información de eventos
+    function _updateProperty(pModOwner){
+      var propertiesList = _getProperties();
+      for(var i = 0; i < propertiesList.length; i++){
+        if(propertiesList[i].id == pModOwner.id){
+          propertiesList[i] = pModOwner;
+        }
+      }
+      console.log(propertiesList);
+      localStorage.setItem('lsPropertiesList', JSON.stringify(propertiesList));
+    }
+  }
 
 })();
+
+
+
