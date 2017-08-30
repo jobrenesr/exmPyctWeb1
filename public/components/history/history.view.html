@@ -1,0 +1,57 @@
+<section id="home1" class="container-fluid">
+  <div ng-include="'./../components/includes/navegación.html'" scope="" onload=""></div>
+  <div class="row" id="listhistory">
+
+    <!-- Seleccione un jugador-->
+  	<div  class="col-md-4 col-md-offset-4">
+  		<md-input-container  class="col-md-8">
+  			<label>Selecciona nombre del jugador</label>
+  			<md-select  name="idPlayer" ng-model="vm.soldProp.idPlayer">
+  				<md-option ng-repeat="player in vm.players" value="{{player.id}}">{{player.name}}</md-option>
+  			</md-select>
+  		</md-input-container>
+  	</div>
+
+
+  <!-- Lista de propiedades-->
+  <div id="tblTeacher" class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <div>
+        <h3 class="md-display-2 col-xs-12 col-sm-10 col-sm-offset-1" id="titleR1">Lista de Propiedades</h3>
+
+        <!-- filtro por nombre -->
+        <div class="col-xs-12 col-sm-4 pull-right">
+          <md-input-container flex-offset class="md-block">
+            <label for="">Filtrar por nombre</label>
+            <input type="text" name="studentFilter" ng-model="vm.studentFilter">
+          </md-input-container>
+        </div>
+
+        <table class="table-responsive md-whiteframe-3dp">
+          <thead class="md-whiteframe-3dp">
+            <tr>
+              <th>Nombre</th>
+              <th>Código</th>
+              <th>Precio</th>
+              <th>Grupo</th>
+              <th>Dueño</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="property in vm.properties  | filter:{ownedby:vm.soldProp.idPlayer} | filter:{ownedby:'!-1'}">
+              <td>{{property.name}}</td>
+              <td>{{property.id}}</td>
+              <td>{{property.price}}</td>
+              <td>{{property.group}}</td>
+              <td>{{property.ownedby}}</td>
+              <td><md-button type="button" class="md-raised clickButton" ng-click="vm.getInfo(property)">Comprar</md-button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+</div>
+
+</section>
