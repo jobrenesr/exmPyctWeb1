@@ -1,0 +1,117 @@
+<section id="hoe" class="container-fluid">
+  <div ng-include="'./../components/includes/navegación.html'" scope="" onload=""></div>
+  <div class="row">
+    <form id="regplayer1" name="frmPlayerReg" autocomplete="off" ng-submit="vm.presavePlayer(vm.player)">
+      <div class="col-md-2">
+
+        <!--nombre jugador-->
+        <md-input-container flex-offset>
+          <label>Nombre completo</label>
+          <input type="text" name="name"  ng-model="vm.player.name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,20}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,20}" placeholder="Pablo Monestel" required>
+
+          <!-- Mensaje de retroalimentacion -->
+          <div ng-messages="frmPlayerReg.name.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div class="col-md-2">
+
+        <!--alias jugador-->
+        <md-input-container flex-offset>
+          <label>Alias</label>
+          <input type="text" name="alias" ng-model="vm.player.alias" placeholder="Champa" required>
+
+          <!-- Mensaje de retroalimentacion -->
+          <div ng-messages="frmRegPlayer.alias.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div class="col-md-2">
+
+        <!--código del jugador-->
+        <md-input-container flex-offset>
+          <label>Código de usuario</label>
+          <input type="number" name="id" ng-model="vm.player.id" min="0" placeholder="9" required>
+
+          <!-- Mensaje de retroalimentacion -->
+          <div ng-messages="frmPlayerReg.id.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div class="col-md-2">
+
+        <!-- Campo cantidad dinero -->
+        <md-input-container flex-offset>
+          <label>Dinero</label>
+          <input type="text" name="money" placeholder="1000" ng-model="vm.player.money" min="1000">
+
+          <!-- Mensaje de retroalimentacion -->
+          <div ng-messages="frmPlayerReg.money.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div class="col-md-2">
+
+        <!-- Campo para la fotografía -->
+        <label id="buttonLogo" for="photo" class="btn btn-primary btn-file">
+          Adjuntar fotografía <input id="photo" name="photo" type="file" ng-model="vm.player.photo" style="display: none;">
+        </label>
+        </div>
+
+        <div class="col-md-2" id="regButton">
+          <!-- botón para guardar datos -->
+          <md-button type="submit" class="md-raised clickButton" ng-disabled="frmPlayerReg.$invalid" ng-click="vm.reset()">Registrar</md-button>
+        </div>
+
+  </div>
+
+  </form>
+  </div>
+
+  <!-- Lista de Jugadores-->
+  <div id="tblTeacher" class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <div>
+        <h3 class="md-display-2 col-xs-12 col-sm-10 col-sm-offset-1" id="titleR1">Lista de Jugadores</h3>
+
+        <!-- filtro por nombre -->
+        <div class="col-xs-12 col-sm-4 pull-right">
+          <md-input-container flex-offset class="md-block">
+            <label for="">Filtrar por nombre</label>
+            <input type="text" name="studentFilter" ng-model="vm.studentFilter">
+          </md-input-container>
+        </div>
+
+        <table class="table-responsive md-whiteframe-3dp">
+          <thead class="md-whiteframe-3dp">
+            <tr>
+              <th>Código</th>
+              <th>Alias</th>
+              <th>Nombre</th>
+              <th>Dinero</th>
+              <th>Foto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="player in vm.players | filter:{name:vm.studentFilter}">
+              <td>{{player.id}}</td>
+              <td>{{player.alias}}</td>
+              <td>{{player.name}}</td>
+              <td>{{player.money}}</td>
+              <td><img ng-src="{{player.photo}}" alt="Description" width="60px" height="60px" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+</section>
