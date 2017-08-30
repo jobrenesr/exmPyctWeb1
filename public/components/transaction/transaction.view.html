@@ -1,0 +1,90 @@
+<section id="hoe" class="container-fluid">
+  <div ng-include="'./../components/includes/navegación.html'" scope="" onload=""></div>
+  <div class="row" id="regplayer1">
+
+    <div class="col-md-2" >
+
+      <!-- Campo Nombre propiedad -->
+      <md-input-container flex-offset>
+        <label>Propiedad</label>
+        <input name="nameProp" ng-model="vm.buyProp.nameProp" disabled="disabled">
+      </md-input-container>
+    </div>
+
+    <div class="col-md-2">
+
+      <!-- Campo id propiedad -->
+      <md-input-container flex-offset>
+        <label>Id de la propiedad</label>
+        <input name="idProp" ng-model="vm.buyProp.idProp" disabled="disabled">
+      </md-input-container>
+    </div>
+
+    <div class="col-md-2">
+
+      <!-- Campo precio propiedad -->
+      <md-input-container flex-offset>
+        <label>Precio</label>
+        <input name="priceProp" ng-model="vm.buyProp.priceProp" disabled="disabled">
+      </md-input-container>
+    </div>
+
+    <div class="col-md-2">
+
+    <!-- Escoge el jugador -->
+      <md-input-container>
+        <label>Selecciona nombre del jugador</label>
+        <md-select id="selectPlayer" name="idPlayer" ng-model="vm.buyProp.idPlayer" required>
+          <md-option ng-repeat="player in vm.players" value="{{player.id}}">{{player.name}}</md-option>
+        </md-select>
+        </div>
+        <div class="col-md-2">
+            <md-button type="submit" class="md-raised" id="btnProcesar"  ng-click="vm.buy(vm.buyProp)">Procesar</md-button>
+        </div>
+
+
+
+      <!-- Lista de propiedades-->
+      <div id="tblTeacher" class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <div>
+            <h3 class="md-display-2 col-xs-12 col-sm-10 col-sm-offset-1" id="titleR1">Lista de Propiedades</h3>
+
+            <!-- filtro por nombre -->
+            <div class="col-xs-12 col-sm-4 pull-right">
+              <md-input-container flex-offset class="md-block">
+                <label for="">Filtrar por nombre</label>
+                <input type="text" name="studentFilter" ng-model="vm.studentFilter">
+              </md-input-container>
+            </div>
+
+            <table class="table-responsive md-whiteframe-3dp">
+              <thead class="md-whiteframe-3dp">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Código</th>
+                  <th>Precio</th>
+                  <th>Grupo</th>
+                  <th>Dueño</th>
+                  <th>Foto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="property in vm.properties | filter:{name:vm.studentFilter}">
+                  <td>{{property.name}}</td>
+                  <td>{{property.id}}</td>
+                  <td>{{property.price}}</td>
+                  <td>{{property.group}}</td>
+                  <td>{{property.ownedby}}</td>
+                  <td><md-button type="button" class="md-raised clickButton" ng-click="vm.getInfo(property)">Comprar</md-button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+		</div>
+	</div>
+</div>
+
+
+</section>
