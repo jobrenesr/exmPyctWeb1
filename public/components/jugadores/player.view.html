@@ -7,7 +7,7 @@
         <!--nombre jugador-->
         <md-input-container flex-offset>
           <label>Nombre completo</label>
-          <input type="text" name="name"  ng-model="vm.player.name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,20}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,20}" placeholder="Pablo Monestel" required>
+          <input type="text" name="name"  ng-model="vm.player.name" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" placeholder="Pablo Monestel" required>
 
           <!-- Mensaje de retroalimentacion -->
           <div ng-messages="frmPlayerReg.name.$error">

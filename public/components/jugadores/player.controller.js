@@ -3,9 +3,9 @@
   .module('myApp')
   .controller('playerCtrl', playerCtrl);
 
-  playerCtrl.$inject = ['$scope', '$location', '$mdDialog', 'imageService', 'playerService', 'Upload'];
+  playerCtrl.$inject = ['$http', '$scope', '$location', '$mdDialog', 'imageService', 'playerService', 'Upload'];
 
-    function playerCtrl($scope, $location, $mdDialog, imageService, playerService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function playerCtrl($http, $scope, $location, $mdDialog, imageService, playerService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.cloudObj = imageService.getConfiguration();
@@ -50,7 +50,13 @@
           }
         }
         if (bError == false) {
-          playerService.setPlayers(newPlayer);
+          playerService.setPlayers(newPlayer)
+          .then(function(response){
+            $http.get('http://localhost:3000/api/get_all_players')
+            .then(function(response){
+              vm.players = response.data
+            })
+          })
           vm.showPlayerAlert();
           clean();
           init();
