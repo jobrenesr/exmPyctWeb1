@@ -10,10 +10,17 @@
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.cloudObj = imageService.getConfiguration();
       vm.players = {};
+      loadTeachers();
+
+      function loadTeachers(){
+        playerService.getPlayers().then(function (response) {
+          vm.players = response.data;
+
+          });
+          }
 
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
-        vm.players = playerService.getPlayers();
       }init();
 
       vm.presavePlayer = function (pNewPlayer) {

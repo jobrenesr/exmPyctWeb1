@@ -11,10 +11,16 @@
 
       vm.buyProp = {};
       vm.buyProperty = false;
+      loadTeachers();
+
+      function loadTeachers(){
+        playerService.getPlayers().then(function (response) {
+          vm.players = response.data;
+
+          });
+          }
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
-        vm.players = playerService.getPlayers();
-        console.log(vm.players);
         vm.properties = propertiesService.getProperties();
       }init();
 
@@ -63,9 +69,9 @@
           .parent(angular.element(document.querySelector('#popupContainer')))
           .clickOutsideToClose(true)
           .title('¡Compra exitosa!')
-          .textContent('¡La propiedad se encuentra ahora bajo su nombre!')
+          .textContent('¡Propiedad comprada con exito!')
           .ariaLabel()
-          .ok('¡Gracias!')
+          .ok('¡Ok!')
           .targetEvent()
           );
       };
@@ -77,9 +83,9 @@
         .parent(angular.element(document.querySelector('#popupContainer')))
         .clickOutsideToClose(true)
         .title('¡Fondos insuficientes!')
-        .textContent('¡El valor de la propiedad sobrepasa la capacidad de pago!')
+        .textContent('¡El jugador no cumple con los requisitos para hacer la compra!')
         .ariaLabel()
-        .ok('¡Gracias!')
+        .ok('¡Ok!')
         .targetEvent()
         );
     };
